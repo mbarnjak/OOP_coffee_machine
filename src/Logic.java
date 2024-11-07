@@ -5,13 +5,8 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Logic {
-    int mlOfWater;
-    int mlOfMilk;
-    int gOfCoffee;
-    int cups;
-    int money;
-    String username;
-    String password;
+
+    Ingredients ingredient = new Ingredients();
 
 
     String path = "doc/Ingredients.txt";
@@ -20,7 +15,7 @@ public class Logic {
 
     public void updateIngredients(){
         try (PrintWriter writer = new PrintWriter(new FileWriter(path))){
-            writer.print(mlOfWater + "; " + mlOfMilk + "; " + gOfCoffee + "; " + cups +  "; " + money +"\nadmin; admin123" );
+            writer.print(ingredient.getMlOfWater() + "; " + ingredient.getMlOfMilk() + "; " + ingredient.getgOfCoffee() + "; " + ingredient.getCups() +  "; " + ingredient.getMoney() +"\nadmin; admin123" );
         }catch (Exception e){
             System.out.println("Error writing to file: " + e.getMessage());
         }
@@ -35,15 +30,14 @@ public class Logic {
 
             scanner.useDelimiter("; |\n");
 
-            mlOfWater = scanner.nextInt();
-            mlOfMilk = scanner.nextInt();
-            gOfCoffee = scanner.nextInt();
-            cups = scanner.nextInt();
-            money = scanner.nextInt();
+            ingredient.setMlOfWater(scanner.nextInt());
+            ingredient.setMlOfMilk(scanner.nextInt());
+            ingredient.setgOfCoffee(scanner.nextInt());
+            ingredient.setCups(scanner.nextInt());
+            ingredient.setMoney(scanner.nextInt());
 
-            username = scanner.next();
-            password = scanner.next();
-            System.out.println(username);
+            ingredient.setUsername(scanner.next());
+            ingredient.setPassword(scanner.next());
 
         }catch (IOException e){
             System.out.println("File not found: " + e.getMessage());
@@ -53,83 +47,83 @@ public class Logic {
 
 
     public void fillMachineWithIngredients(int waterToAdd, int milkToAdd, int coffeeToAdd, int cupsToAdd) {
-        mlOfWater += waterToAdd;
+        ingredient.setMlOfWater(ingredient.getMlOfWater() + waterToAdd);
 
-        mlOfMilk += milkToAdd;
+        ingredient.setMlOfMilk(ingredient.getMlOfMilk() + milkToAdd);
 
-        gOfCoffee += coffeeToAdd;
+        ingredient.setgOfCoffee(ingredient.getgOfCoffee() + coffeeToAdd);
 
-        cups += cupsToAdd;
+        ingredient.setCups(ingredient.getCups() + cupsToAdd);
     }
 
 
     public void takeMoney() {
-        System.out.println("I gave you $" + money );
-        money = 0;
+        System.out.println("I gave you $" + ingredient.getMoney() );
+        ingredient.setMoney(0);
 
     }
 
 
     //espresso
     public boolean enoughResourcesEspresso() {
-        if (mlOfWater < 250) {
+        if (ingredient.getMlOfWater() < 250) {
             return false;
         }
-        else if (gOfCoffee < 16) {
+        else if (ingredient.getgOfCoffee() < 16) {
             return false;
         }
-        else return cups >= 1;
+        else return ingredient.getCups() >= 1;
     }
 
     public void makeEspresso(){
-        mlOfWater -= 250;
-        gOfCoffee -= 16;
-        cups -= 1;
-        money += 4;
+        ingredient.setMlOfWater(ingredient.getMlOfWater() - 250);
+        ingredient.setgOfCoffee(ingredient.getgOfCoffee() - 16);
+        ingredient.setCups(ingredient.getCups() - 1);
+        ingredient.setMoney(ingredient.getMoney() - 4);
     }
 
 
     //latte
     public boolean enoughResourcesLatte() {
-        if (mlOfWater < 350) {
+        if (ingredient.getMlOfWater() < 350) {
             return false;
-        }else if(mlOfMilk < 75){
-            return false;
-        }
-        else if (gOfCoffee < 20) {
+        }else if(ingredient.getMlOfMilk() < 75){
             return false;
         }
-        else return cups >= 1;
+        else if (ingredient.getgOfCoffee() < 20) {
+            return false;
+        }
+        else return ingredient.getCups() >= 1;
     }
 
     public void makeLatte(){
-        mlOfWater -= 350;
-        mlOfMilk -= 75;
-        gOfCoffee -= 20;
-        cups -= 1;
-        money += 7;
+        ingredient.setMlOfWater(ingredient.getMlOfWater() - 350);
+        ingredient.setMlOfMilk(ingredient.getMlOfMilk() - 75);
+        ingredient.setgOfCoffee(ingredient.getgOfCoffee() - 20);
+        ingredient.setCups(ingredient.getCups() - 1);
+        ingredient.setMoney(ingredient.getMoney() - 7);
     }
 
 
     //cappuccino
     public boolean enoughResourcesCappuccino() {
-        if (mlOfWater < 200) {
+        if (ingredient.getMlOfWater() < 200) {
             return false;
-        }else if(mlOfMilk < 100){
-            return false;
-        }
-        else if (gOfCoffee < 12) {
+        }else if(ingredient.getMlOfMilk() < 100){
             return false;
         }
-        else return cups >= 1;
+        else if (ingredient.getgOfCoffee() < 12) {
+            return false;
+        }
+        else return ingredient.getCups() >= 1;
     }
 
     public void makeCappuccino(){
-        mlOfWater -= 200;
-        mlOfMilk -= 100;
-        gOfCoffee -= 12;
-        cups -= 1;
-        money += 6;
+        ingredient.setMlOfWater(ingredient.getMlOfWater() - 200);
+        ingredient.setMlOfMilk(ingredient.getMlOfMilk() - 100);
+        ingredient.setgOfCoffee(ingredient.getgOfCoffee() - 12);
+        ingredient.setCups(ingredient.getCups() - 1);
+        ingredient.setMoney(ingredient.getMoney() - 6);
     }
 
 

@@ -5,10 +5,11 @@ public class UI {
     Scanner scanner = new Scanner(System.in);
 
     Logic logic = new Logic();
-
+    Ingredients ingredients = new Ingredients();
 
     public void startMachine() {
         logic.getIngredients();
+
         while (true) {
             System.out.println("1- buy\n2- login");
             System.out.print(">");
@@ -26,7 +27,7 @@ public class UI {
                 System.out.println("Enter password:");
                 System.out.print(">");
                 String passwordInput = scanner.next();
-                if (userNameInput.equals(logic.username) && passwordInput.equals(logic.password)) {
+                if (userNameInput.equals(ingredients.getUsername()) && passwordInput.equals(ingredients.getPassword())) {
                     while (true) {
                         printMainMenu();
                         choice = inputInt();
@@ -103,8 +104,8 @@ public class UI {
 
 
     private void printIngredients() {
-        System.out.println("The coffee machine has: \n" + logic.mlOfWater + " ml of water\n" + logic.mlOfMilk + " ml of milk\n" + logic.gOfCoffee +
-                " g of coffee beans\n" + logic.cups + " disposable cups\n" + "$" + logic.money + " of money");
+        System.out.println("The coffee machine has: \n" + ingredients.getMlOfWater() + " ml of water\n" + ingredients.getMlOfMilk() + " ml of milk\n" + ingredients.getgOfCoffee() +
+                " g of coffee beans\n" + ingredients.getgOfCoffee() + " disposable cups\n" + "$" + ingredients.getMoney() + " of money");
     }
 
 
