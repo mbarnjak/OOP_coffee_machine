@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class Ingredients {
+public class Data {
     private int mlOfWater;
     private int mlOfMilk;
     private int gOfCoffee;

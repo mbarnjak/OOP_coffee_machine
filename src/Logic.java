@@ -2,7 +2,7 @@
 
 public class Logic {
 
-    Ingredients ingredient = new Ingredients();
+    Data ingredient = new Data();
 
     public void fillMachineWithIngredients(int waterToAdd, int milkToAdd, int coffeeToAdd, int cupsToAdd) {
         ingredient.setMlOfWater(ingredient.getMlOfWater() + waterToAdd);
