@@ -17,6 +17,7 @@ public class Logic {
     String path = "doc/Ingredients.txt";
 
 
+
     public void updateIngredients(){
         try (PrintWriter writer = new PrintWriter(new FileWriter(path))){
             writer.print(mlOfWater + "; " + mlOfMilk + "; " + gOfCoffee + "; " + cups +  "; " + money +"\nadmin; admin123" );
