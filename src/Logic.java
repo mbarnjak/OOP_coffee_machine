@@ -1,50 +1,8 @@
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Scanner;
+
 
 public class Logic {
 
     Ingredients ingredient = new Ingredients();
-
-
-    String path = "doc/Ingredients.txt";
-
-
-
-    public void updateIngredients(){
-        try (PrintWriter writer = new PrintWriter(new FileWriter(path))){
-            writer.print(ingredient.getMlOfWater() + "; " + ingredient.getMlOfMilk() + "; " + ingredient.getgOfCoffee() + "; " + ingredient.getCups() +  "; " + ingredient.getMoney() +"\nadmin; admin123" );
-        }catch (Exception e){
-            System.out.println("Error writing to file: " + e.getMessage());
-        }
-    }
-
-
-    public void getIngredients(){
-        Scanner scanner;
-
-        try (FileReader filereader = new FileReader(path)){
-            scanner = new Scanner(filereader);
-
-            scanner.useDelimiter("; |\n");
-
-            ingredient.setMlOfWater(scanner.nextInt());
-            ingredient.setMlOfMilk(scanner.nextInt());
-            ingredient.setgOfCoffee(scanner.nextInt());
-            ingredient.setCups(scanner.nextInt());
-            ingredient.setMoney(scanner.nextInt());
-
-            ingredient.setUsername(scanner.next());
-            ingredient.setPassword(scanner.next());
-
-        }catch (IOException e){
-            System.out.println("File not found: " + e.getMessage());
-        }
-
-    }
-
 
     public void fillMachineWithIngredients(int waterToAdd, int milkToAdd, int coffeeToAdd, int cupsToAdd) {
         ingredient.setMlOfWater(ingredient.getMlOfWater() + waterToAdd);
@@ -79,7 +37,7 @@ public class Logic {
         ingredient.setMlOfWater(ingredient.getMlOfWater() - 250);
         ingredient.setgOfCoffee(ingredient.getgOfCoffee() - 16);
         ingredient.setCups(ingredient.getCups() - 1);
-        ingredient.setMoney(ingredient.getMoney() - 4);
+        ingredient.setMoney(ingredient.getMoney() + 4);
     }
 
 
@@ -101,7 +59,7 @@ public class Logic {
         ingredient.setMlOfMilk(ingredient.getMlOfMilk() - 75);
         ingredient.setgOfCoffee(ingredient.getgOfCoffee() - 20);
         ingredient.setCups(ingredient.getCups() - 1);
-        ingredient.setMoney(ingredient.getMoney() - 7);
+        ingredient.setMoney(ingredient.getMoney() + 7);
     }
 
 
@@ -123,12 +81,43 @@ public class Logic {
         ingredient.setMlOfMilk(ingredient.getMlOfMilk() - 100);
         ingredient.setgOfCoffee(ingredient.getgOfCoffee() - 12);
         ingredient.setCups(ingredient.getCups() - 1);
-        ingredient.setMoney(ingredient.getMoney() - 6);
+        ingredient.setMoney(ingredient.getMoney() + 6);
     }
 
 
+    public void loadFromFileData() {
+        ingredient.getIngredients();
+    }
 
+    public void saveDataToFile(){
+        ingredient.updateIngredients();
+    }
 
+    public String getUsername(){
+        return ingredient.getUsername();
+    }
 
+    public String getUserPass(){
+        return ingredient.getPassword();
+    }
 
+    public int getWater(){
+        return ingredient.getMlOfWater();
+    }
+
+    public int getBeans(){
+        return ingredient.getgOfCoffee();
+    }
+
+    public int getCups(){
+        return ingredient.getCups();
+    }
+
+    public int getMoney(){
+        return ingredient.getMoney();
+    }
+
+    public int getMilk(){
+        return ingredient.getMlOfMilk();
+    }
 }

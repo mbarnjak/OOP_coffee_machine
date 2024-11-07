@@ -5,10 +5,10 @@ public class UI {
     Scanner scanner = new Scanner(System.in);
 
     Logic logic = new Logic();
-    Ingredients ingredients = new Ingredients();
+
 
     public void startMachine() {
-        logic.getIngredients();
+        logic.loadFromFileData();
 
         while (true) {
             System.out.println("1- buy\n2- login");
@@ -27,7 +27,7 @@ public class UI {
                 System.out.println("Enter password:");
                 System.out.print(">");
                 String passwordInput = scanner.next();
-                if (userNameInput.equals(ingredients.getUsername()) && passwordInput.equals(ingredients.getPassword())) {
+                if (userNameInput.equals(logic.getUsername()) && passwordInput.equals(logic.getUserPass())) {
                     while (true) {
                         printMainMenu();
                         choice = inputInt();
@@ -58,7 +58,7 @@ public class UI {
                         //exit
                         else if (choice == 4) {
                             System.out.println("Turning off...");
-                            logic.updateIngredients();
+                            logic.saveDataToFile();
                             System.exit(0);
                         } else if (choice == 5) {
                             break;
@@ -104,8 +104,8 @@ public class UI {
 
 
     private void printIngredients() {
-        System.out.println("The coffee machine has: \n" + ingredients.getMlOfWater() + " ml of water\n" + ingredients.getMlOfMilk() + " ml of milk\n" + ingredients.getgOfCoffee() +
-                " g of coffee beans\n" + ingredients.getgOfCoffee() + " disposable cups\n" + "$" + ingredients.getMoney() + " of money");
+        System.out.println("The coffee machine has: \n" + logic.getWater() + " ml of water\n" + logic.getMilk() + " ml of milk\n" + logic.getBeans() +
+                " g of coffee beans\n" + logic.getCups() + " disposable cups\n" + "$" + logic.getMoney() + " of money");
     }
 
 
