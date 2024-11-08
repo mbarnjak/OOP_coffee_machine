@@ -126,17 +126,12 @@ public class UI {
     }
 
 
-    private void printWrongInput() {
-        System.out.println("Wrong input");
-    }
-
-
     private int inputInt() {
         if (scanner.hasNextInt())
             return scanner.nextInt();
         else {
             scanner.next();
-            printWrongInput();
+            System.out.println("Wrong input");
             return 0;
         }
     }
