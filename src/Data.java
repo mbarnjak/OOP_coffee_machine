@@ -14,6 +14,7 @@ public class Data {
     private String password;
     private final String path = "doc/Ingredients.txt";
 
+    //save current state of ingredients
     public void updateIngredients(){
         try (PrintWriter writer = new PrintWriter(new FileWriter(path))){
             writer.print(mlOfWater + "; " + mlOfMilk + "; " + gOfCoffee + "; " + cups +  "; " + money +"\nadmin; admin123" );
@@ -22,6 +23,7 @@ public class Data {
         }
     }
 
+    //upload ingredients from file to variables
     public void getIngredients(){
         Scanner scanner;
 
@@ -46,6 +48,8 @@ public class Data {
 
     }
 
+
+    //getters and setters
     public int getMlOfWater() {
         return mlOfWater;
     }

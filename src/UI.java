@@ -6,7 +6,7 @@ public class UI {
 
     Logic logic = new Logic();
 
-
+    //main method
     public void startMachine() {
         logic.loadFromFileData();
 

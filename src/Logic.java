@@ -2,122 +2,122 @@
 
 public class Logic {
 
-    Data ingredient = new Data();
+    Data data = new Data();
 
     public void fillMachineWithIngredients(int waterToAdd, int milkToAdd, int coffeeToAdd, int cupsToAdd) {
-        ingredient.setMlOfWater(ingredient.getMlOfWater() + waterToAdd);
+        data.setMlOfWater(data.getMlOfWater() + waterToAdd);
 
-        ingredient.setMlOfMilk(ingredient.getMlOfMilk() + milkToAdd);
+        data.setMlOfMilk(data.getMlOfMilk() + milkToAdd);
 
-        ingredient.setgOfCoffee(ingredient.getgOfCoffee() + coffeeToAdd);
+        data.setgOfCoffee(data.getgOfCoffee() + coffeeToAdd);
 
-        ingredient.setCups(ingredient.getCups() + cupsToAdd);
+        data.setCups(data.getCups() + cupsToAdd);
     }
 
-
     public void takeMoney() {
-        System.out.println("I gave you $" + ingredient.getMoney() );
-        ingredient.setMoney(0);
+        System.out.println("I gave you $" + data.getMoney() );
+        data.setMoney(0);
 
     }
 
 
     //espresso
     public boolean enoughResourcesEspresso() {
-        if (ingredient.getMlOfWater() < 250) {
+        if (data.getMlOfWater() < 250) {
             return false;
         }
-        else if (ingredient.getgOfCoffee() < 16) {
+        else if (data.getgOfCoffee() < 16) {
             return false;
         }
-        else return ingredient.getCups() >= 1;
+        else return data.getCups() >= 1;
     }
 
     public void makeEspresso(){
-        ingredient.setMlOfWater(ingredient.getMlOfWater() - 250);
-        ingredient.setgOfCoffee(ingredient.getgOfCoffee() - 16);
-        ingredient.setCups(ingredient.getCups() - 1);
-        ingredient.setMoney(ingredient.getMoney() + 4);
+        data.setMlOfWater(data.getMlOfWater() - 250);
+        data.setgOfCoffee(data.getgOfCoffee() - 16);
+        data.setCups(data.getCups() - 1);
+        data.setMoney(data.getMoney() + 4);
     }
 
 
     //latte
     public boolean enoughResourcesLatte() {
-        if (ingredient.getMlOfWater() < 350) {
+        if (data.getMlOfWater() < 350) {
             return false;
-        }else if(ingredient.getMlOfMilk() < 75){
-            return false;
-        }
-        else if (ingredient.getgOfCoffee() < 20) {
+        }else if(data.getMlOfMilk() < 75){
             return false;
         }
-        else return ingredient.getCups() >= 1;
+        else if (data.getgOfCoffee() < 20) {
+            return false;
+        }
+        else return data.getCups() >= 1;
     }
 
     public void makeLatte(){
-        ingredient.setMlOfWater(ingredient.getMlOfWater() - 350);
-        ingredient.setMlOfMilk(ingredient.getMlOfMilk() - 75);
-        ingredient.setgOfCoffee(ingredient.getgOfCoffee() - 20);
-        ingredient.setCups(ingredient.getCups() - 1);
-        ingredient.setMoney(ingredient.getMoney() + 7);
+        data.setMlOfWater(data.getMlOfWater() - 350);
+        data.setMlOfMilk(data.getMlOfMilk() - 75);
+        data.setgOfCoffee(data.getgOfCoffee() - 20);
+        data.setCups(data.getCups() - 1);
+        data.setMoney(data.getMoney() + 7);
     }
 
 
     //cappuccino
     public boolean enoughResourcesCappuccino() {
-        if (ingredient.getMlOfWater() < 200) {
+        if (data.getMlOfWater() < 200) {
             return false;
-        }else if(ingredient.getMlOfMilk() < 100){
-            return false;
-        }
-        else if (ingredient.getgOfCoffee() < 12) {
+        }else if(data.getMlOfMilk() < 100){
             return false;
         }
-        else return ingredient.getCups() >= 1;
+        else if (data.getgOfCoffee() < 12) {
+            return false;
+        }
+        else return data.getCups() >= 1;
     }
 
     public void makeCappuccino(){
-        ingredient.setMlOfWater(ingredient.getMlOfWater() - 200);
-        ingredient.setMlOfMilk(ingredient.getMlOfMilk() - 100);
-        ingredient.setgOfCoffee(ingredient.getgOfCoffee() - 12);
-        ingredient.setCups(ingredient.getCups() - 1);
-        ingredient.setMoney(ingredient.getMoney() + 6);
+        data.setMlOfWater(data.getMlOfWater() - 200);
+        data.setMlOfMilk(data.getMlOfMilk() - 100);
+        data.setgOfCoffee(data.getgOfCoffee() - 12);
+        data.setCups(data.getCups() - 1);
+        data.setMoney(data.getMoney() + 6);
     }
 
 
+    //methods to send data from Data to UI
     public void loadFromFileData() {
-        ingredient.getIngredients();
+        data.getIngredients();
     }
 
     public void saveDataToFile(){
-        ingredient.updateIngredients();
+        data.updateIngredients();
     }
 
     public String getUsername(){
-        return ingredient.getUsername();
+        return data.getUsername();
     }
 
     public String getUserPass(){
-        return ingredient.getPassword();
+        return data.getPassword();
     }
 
     public int getWater(){
-        return ingredient.getMlOfWater();
+        return data.getMlOfWater();
     }
 
     public int getBeans(){
-        return ingredient.getgOfCoffee();
+        return data.getgOfCoffee();
     }
 
     public int getCups(){
-        return ingredient.getCups();
+        return data.getCups();
     }
 
     public int getMoney(){
-        return ingredient.getMoney();
+        return data.getMoney();
     }
 
     public int getMilk(){
-        return ingredient.getMlOfMilk();
+        return data.getMlOfMilk();
     }
 }
