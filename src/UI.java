@@ -66,7 +66,7 @@ public class UI {
                     }
                 }else System.out.println("Wrong username or password");
                 //wrong input
-            } else System.out.println("Wrong input");
+            } else System.out.println(" ");
 
         }
     }
@@ -97,7 +97,7 @@ public class UI {
         } else if (choice == 4) {
             System.out.println(" ");
         } else {
-            printWrongInput();
+            System.out.println(" ");
         }
 
     }
@@ -136,6 +136,7 @@ public class UI {
             return scanner.nextInt();
         else {
             scanner.next();
+            printWrongInput();
             return 0;
         }
     }
